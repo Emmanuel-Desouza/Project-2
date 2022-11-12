@@ -146,11 +146,36 @@ The following bare-bones configuration was entered:
 
 ### opening website URL from browser using IP address:
 
-[website url](http://54.209.203.146/)
+[url from browser](http://54.209.203.146/)
 
 ![website echo](./images/public-ip-echo.png)
 
 # The index html file will be left in place as a temporary landing page for the application until an index.php file is created to replace it. Once that is done, the index.html file will be renamed or removed from the document root, as it would take precedence over an index.php file by default.
+
+## Testing PHP with nginx
+
+### Creating a new file called info.php within document root in nano text editor:
+
+`sudo nano /var/www/projectLEMP/info.php`
+
+![info.php file creation](./images/info-php.png)
+
+### The following config code was entered
+
+![info.php config](./images/config-code.png)
+
+### accessing page from web browser by visiting the domain name or public IP address set up in Nginx configuration file, followed by /info.php:
+
+`http://`server_domain_or_IP`/info.php`
+
+![php webpage from browser](./images/webpage-php.png)
+
+### After checking the relevant information about the PHP server through that page, it’s best to remove the created info.php file as it contains sensitive information about the PHP environment and Ubuntu server.
+
+`sudo rm /var/www/projectLEMP/info.php`
+
+![removing info.php](./images/remove-php.png)
+
 
 
 
