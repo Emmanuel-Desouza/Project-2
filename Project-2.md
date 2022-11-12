@@ -90,6 +90,69 @@
 
 ![installing php-fpm and php-mysql](./images/install-php.png)
 
+## Confiiguring nginx to use php processor
+
+### Creating the root web directory for projectLEMP domain
+
+`sudo mkdir /var/www/projectLEMP`
+
+![directory for domain](./images/directory-domain.png)
+
+## Assigning ownership of the directory with the $USER environment variable, which will reference current system user:
+
+`sudo chown -R $USER:$USER /var/www/projectLEMP`
+
+![chown for projectLEMP](./images/chown-domain.png)
+
+## opening new configuration file in Nginx’s sites-available directory using nano:
+
+`sudo nano /etc/nginx/sites-available/projectLEMP`
+
+![config file](./images/nano-config.png)
+
+The following bare-bones configuration was entered:
+
+![bare bones config](./images/bare-bones.png)
+
+### Activating configuration by linking to the config file from Nginx’s sites-enabled directory:
+
+`sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/`
+
+![activating configuration](./images/activating-config.png)
+
+### Testing configuration for syntax errors
+
+`sudo nginx -t`
+
+![checking syntax](./images/syntax-ok.png)
+
+### Disabling default Nginx host that is currently configured to listen on port 80
+
+`sudo unlink /etc/nginx/sites-enabled/default`
+
+![disabling default host](./images/disable-default.png)
+
+### Reloading Nginx to apply the changes:
+
+`sudo systemctl reload nginx`
+
+![nginx reload](./images/nginx-reload.png)
+
+### Creating an index.html file in web root directory to test that new server block works as expected:
+
+`sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html`
+
+![index.html file creation](./images/create-file-in-directory.png)
+
+### opening website URL from browser using IP address:
+
+[website url](http://54.209.203.146/)
+
+![website echo](./images/public-ip-echo.png)
+
+# The index html file will be left in place as a temporary landing page for the application until an index.php file is created to replace it. Once you do that, the index.html file will be renamed or removed from the document root, as it would take precedence over an index.php file by default.
+
+
 
 
 
