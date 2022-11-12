@@ -82,4 +82,14 @@
 
 ![exiting mysql shell](./images/mysql-exit.png)
 
+## Installing PHP
+
+### To install php-fpm and php-mysql to tell Nginx to pass PHP requests to this software for processing and to communicate with MySQL-based databases, respectively
+
+`sudo apt install php-fpm php-mysql`
+
+![installing php-fpm and php-mysql](./images/install-php.png)
+
+
+
 
