@@ -150,7 +150,7 @@ The following bare-bones configuration was entered:
 
 ![website echo](./images/public-ip-echo.png)
 
-# The index html file will be left in place as a temporary landing page for the application until an index.php file is created to replace it. Once you do that, the index.html file will be renamed or removed from the document root, as it would take precedence over an index.php file by default.
+# The index html file will be left in place as a temporary landing page for the application until an index.php file is created to replace it. Once that is done, the index.html file will be renamed or removed from the document root, as it would take precedence over an index.php file by default.
 
 
 
