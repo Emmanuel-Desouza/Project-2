@@ -1,3 +1,5 @@
+# PROJECT 2: LEMP STACK IMPLEMENTATION
+
 # Documentation of Project-2
 
 ## Installing the nginx web server
@@ -176,8 +178,121 @@ The following bare-bones configuration was entered:
 
 ![removing info.php](./images/remove-php.png)
 
+## Retreiving Data from mysql database with php
 
+### connect to the MySQL console using the root account:
 
+`sudo mysql`
 
+![connecting sql](./images/connecting-to-sql.png)
 
+### To create a new database
+
+`mysql> CREATE DATABASE `example_database`;`
+
+![creating database](./images/create-database.png)
+
+### Creating a user and granting user full privileges to the newly created database
+
+`mysql>  CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY '*******';`
+
+![creating database user](./images/create-database-user.png)
+
+### Giving user permission to database created
+
+`mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';`
+
+![granting permission](./images/granting-permission.png)
+
+### Exiting mysql shell
+
+`mysql> exit`
+
+![exiting mysql shell](./images/mysql-exit.png)
+
+### Testing new user has proper permissions by logging into mysql console using custom user credentials:
+
+`mysql -u example_user -p`
+
+![testing custom user](./images/test-custom-user.png)
+
+### Confirming access to the example_database database:
+
+`mysql> SHOW DATABASES;`
+
+![show access to DB](./images/show-database.png)
+
+### creating  a test table named todo_list by running the following commands
+
+`CREATE TABLE example_database.todo_list (`
+
+`mysql>     item_id INT AUTO_INCREMENT,`
+
+`mysql>     content VARCHAR(255),`
+
+`mysql>     PRIMARY KEY(item_id)`
+
+`mysql> );`
+
+![creating to do list](./images/creating-to-do.png)
+
+### Inserting rows of content into the test table
+
+`mysql> INSERT INTO example_database.todo_list (content) VALUES ("My first important item");`
+
+`mysql> INSERT INTO example_database.todo_list (content) VALUES ("My second important item");`
+
+`mysql> INSERT INTO example_database.todo_list (content) VALUES ("My third important item");`
+
+`mysql> INSERT INTO example_database.todo_list (content) VALUES ("and this one more thing");`
+
+![a few rows of content](./images/rows-of-content.png)
+
+### To confirm the data was successfully saved to the table
+
+`mysql>  SELECT * FROM example_database.todo_list;`
+
+![confirming data on table](./images/confirm-data.png)
+
+### Exiting sql
+
+`mysql> exit`
+
+![exiting mysql shell](./images/mysql-exit.png)
+
+### creating a PHP script that will connect to MySQL and query for content. Creating a new PHP file in custom web root directory using nano  editor:
+
+`nano /var/www/projectLEMP/todo_list.php`
+
+![creating new PHP file in web root directory](./images/nano-to-do.png)
+
+### The following content is entered and saved into the todo_list.php script. The PHP script connects to the MySQL database and queries for the content of the todo_list table, displays the results in a list. If there is a problem with the database connection, it will throw an exception.
+
+`<?php`
+`$user = "example_user";`
+`$password = "password";`
+`$database = "example_database";`
+`$table = "todo_list";`
+
+`try {`
+  `$db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);`
+  `echo "<h2>TODO</h2><ol>";`
+  `foreach($db->query("SELECT content FROM $table") as $row) {`
+    `echo "<li>" . $row['content'] . "</li>";`
+  `}`
+  `echo "</ol>";`
+`} catch (PDOException $e) {`
+    `print "Error!: " . $e->getMessage() . "<br/>";`
+    `die();`
+`}`
+
+### accessing the page in web browser using domain name or public IP address configured for the website, followed by /todo_list.php:
+
+[url](http://54.209.203.146/todo_list.php)
+
+![public address from web browser](./images/public-address-echo.png)
+
+# PHP environment is ready to connect and interact with your MySQL server.
+
+# We have built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database management system.
 
