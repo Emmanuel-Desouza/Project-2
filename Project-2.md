@@ -92,7 +92,7 @@
 
 ![installing php-fpm and php-mysql](./images/install-php.png)
 
-## Confiiguring nginx to use php processor
+## Configuring nginx to use php processor
 
 ### Creating the root web directory for projectLEMP domain
 
@@ -292,7 +292,7 @@ The following bare-bones configuration was entered:
 
 ![public address from web browser](./images/public-address-echo.png)
 
-# PHP environment is ready to connect and interact with your MySQL server.
+# PHP environment is ready to connect and interact with MySQL server.
 
 # We have built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database management system.
 
