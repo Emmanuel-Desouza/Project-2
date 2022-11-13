@@ -294,5 +294,5 @@ The following bare-bones configuration was entered:
 
 # PHP environment is ready to connect and interact with MySQL server.
 
-# We have built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database management system.
+# We have built a flexible foundation for serving PHP websites and applications to visitors, using Nginx as web server and MySQL as database management system.
 
